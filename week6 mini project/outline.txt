@@ -1,0 +1,58 @@
+학사관리 프로그램
+		도메인
+			교수정보, 학생정보, 과정정보
+		
+		기능
+			교수로 가입하기, 교수로 로그인하기, 과정 등록하기, 자신이 등록한 개설과정 조회하기, 자신이 등록한 개설 과정에 수강신청한 학생 조회하기
+			
+			학생으로 가입하기, 학생으로 로그인하기, 전체 개설 과정 조회하기, 개설된 과정 중 하나에 수강신청 하기, 자신이 수강신청한 과정 조회하기
+			
+		부가기능
+			프로그램 종료시 교수정보,학생정보,과정정보 파일에 저장하기
+			프로그램 시작시 저장된 교수 정보, 학생정보, 과정정보 파일에서 읽어서 초기화하기
+		
+	
+	
+	
+	1. Student.java
+		학번, 이름, 소속학과, 학년 , 아이디&비번
+	
+	2. Professor.java
+		교수번호, 이름, 소속학과, 직위, 아이디&비번
+		
+	3. Course.java
+		과정코드, 과정명, 정원, 담당교수, 신청 학생
+		field : <S>code, <S>name, <S>prof, <i>limit, <AL<Student>>students
+
+	4. CourseMgr.java
+		각종 기능 제공
+		
+		ArrayList<Student> students
+		ArrayList<Professor> professors
+		ArrayList<Course> courses
+		
+		Professor loginedProfessor = null;
+		Student loginedStudent = null;
+		
+		교수정보 가입 : 교수정보를 입력받아서 Professor 객체에 저장 -> professors에 저장
+		학생정보 가입 : 학생정보를 입력받아서 Student객체에 저장 -> students에 저장
+		교수로 로그인 : 아이디/비번 입력받아서 professors에 저장된 교수정보 중 일치하는지 체크 -> 일치정보가 존재하면 loginedProfessor에 저장
+		학생으로 로그인 : 아이디/비번 입력받아서 professors에 저장된 학생정보 중 일치하는지 체크 -> 일치정보가 존재하면 loginedStudent에 저장
+		
+		교수--------
+		과정등록 : 과정 정보를 입력받아서 Course객체에 저장 -> courses에 저장
+		자신이 개설한 과정 조회: courses에 저장된 과정 중 현재 로그인한 교수가 직접등록한 과정만 표시
+		자신이 개설한 과정에 수강신강한 학생 조회 : courses에 저장된 과정 중 현재 로그인한 교수가 등록한 과정에 수강신청한 학생정보 표시
+		로그아웃 : loginedProfessor에 저장된 정보 삭제
+		
+		학생--------
+		개설 과정 조회 : courses에 등록된 모든 과정 표시
+		수강신청 : courses에 등록된 과정중에서 선택한 과정(Course)에 로그인한 본인을 등록(저장)하기
+		수강신청한 과정 조회 : course에 등록된 과정중에서 로그인한 학생본인이 수강신청한 과정 표시하기
+		로그아웃 : loginedStudent에 저장된 정보 삭제
+		
+		
+		
+			
+	5. CourseApp
+		main 메소드 : 메뉴 기능 제공
