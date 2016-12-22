@@ -76,7 +76,7 @@ public class GhostLeg {
 						j=temp++;
 						continue;
 					}
-					if (ladder[i][+j]) {
+					if (ladder[i][j]) {
 						//System.out.println("오른쪽");
 						j++;
 						continue;

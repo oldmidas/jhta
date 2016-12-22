@@ -28,15 +28,24 @@ public class MovingLetter {
 			enter = sc.nextLine();
 			
 			temp = letters[0][0];
-
-			letters[0][0] = letters[0][1];
-			letters[0][1] = letters[0][2];
-			letters[0][2] = letters[0][3];
-			letters[0][3] = letters[2][3];
-			letters[0][3] = letters[2][3];
+			letters[0][0] = letters[1][0];
+			letters[1][0] = letters[2][0];
+			letters[2][0] = letters[3][0];
+			letters[3][0] = letters[3][1];
+			letters[3][1] = letters[3][2];
+			letters[3][2] = letters[3][3];
+			letters[3][3] = letters[2][3];
+			letters[2][3] = letters[1][3];
+			letters[1][3] = letters[0][3];
+			letters[0][3] = letters[0][2];
+			letters[0][2] = letters[0][1];
+			letters[0][1] = temp;
+			temp = letters[1][1];
+			letters[1][1] = letters[1][2];
+			letters[1][2] = letters[2][2];
+			letters[2][2] = letters[2][1];
+			letters[2][1] = temp;
 			
-			
-						
 		}
 	}
 	 
